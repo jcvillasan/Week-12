@@ -15,7 +15,7 @@ exports.addStudent = async (req, res) => {
     });
 }
 
-exports.getStudentById = async (req, res) => {
+exports.getStudentByID = async (req, res) => {
     const student = await Students.findByPk(req.params.id);
     res.json({
         message: `Student with id ${req.params.id} is fetched.`,
@@ -24,7 +24,7 @@ exports.getStudentById = async (req, res) => {
 }
 
 exports.updateStudent = async (req, res) => {
-    const IsUpdated = await  Students.update(req.body, {
+    const IsUpdated = await Students.update(req.body, {
         where: {
             id: req.params.id
         }
@@ -34,7 +34,7 @@ exports.updateStudent = async (req, res) => {
         message: `Student with id ${req.params.id} is updated.`,
         isUpdated: Boolean(isUpdated[0]),
         result: updatedStudent
-    })
+    });
 }
 
 exports.deleteStudent = async (req, res) => {
